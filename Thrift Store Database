@@ -1,0 +1,25 @@
+# Thrift Store Database 
+
+CREATE TABLE sugarhyStore (id INTEGER PRIMARY KEY, category TEXT, name TEXT, aisle INTEGER, price INTEGER);
+
+INSERT INTO sugarhyStore VALUES (1, "top", "y2k star baby tee", 1, 8), 
+(2, "jacket", "vintage varsity jacket", 2, 22), 
+(3, "top", "basic crop top", 1, 6), 
+(4, "shirt", "vintage London half zipup", 3, 16), 
+(5, "top", "mini crochet top", 1, 8), 
+(6, "shirt", "vintage ralph lauren", 3, 14), 
+(7, "shirt", "racerworldwide damaged top", 3, 17), 
+(8, "hats", "vintage adidas tricolor baseball cap", 4, 16), 
+(9, "hats", "acne studio beanie", 4, 32), 
+(10, "hats", "sunhat", 4, 5), 
+(11, "bottom", "y2k pink flower print miniskirt", 5, 8), 
+(12, "bottom", "vintage nike cargo trackpants", 5, 16), 
+(13, "bottom", "parachute pants", 5, 12), 
+(14, "bottom", "y2k denim miniskirt with belt", 5, 18), 
+(15, "bottom", "white maxiskirt", 5, 8);
+
+SELECT * FROM sugarhyStore;
+
+SELECT * FROM sugarhyStore ORDER BY price;
+
+SELECT category, SUM(price) FROM sugarhyStore GROUP BY category;
