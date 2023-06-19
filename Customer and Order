@@ -1,42 +1,5 @@
-/*////////// Exploring Database //////////*/
-/* What columns are in the customers table? */
-/* orderID, acctnum */
-SELECT * FROM BIT_DB.customers LIMIT 20;
+/* In this SQL, I'm querying a database with multiple tables in it to quantify statistics about customer and order data */
 
-/* What columns are in the JanSales table? */
-/* orderID, Product, Quantity, price, orderdate, location */
-SELECT * FROM BIT_DB.JanSales LIMIT 20;
-
-/* What columns are in the FebSales table?*/
-SELECT * FROM BIT_DB.FebSales LIMIT 20;
-
-/*1*/
-SELECT orderdate
-FROM BIT_DB.FebSales
-WHERE orderdate between '02/13/19 00:00' AND '02/18/19 00:00';
-
-/*2*/
-SELECT location
-FROM BIT_DB.FebSales 
-WHERE orderdate = '02/18/19 01:35';
-
-/*3*/
-SELECT sum(quantity)
-FROM BIT_DB.FebSales 
-WHERE orderdate like '02/18/19%';
-
-/*4*/
-SELECT distinct Product
-FROM BIT_DB.FebSales
-WHERE Product like '%Batteries%';
-
-/*5*/
-SELECT distinct Product, Price
-FROM BIT_DB.FebSales 
-WHERE Price like '%.99';
-
-
-/*///////// QUERIES /////////*/
 /* 1. How many orders were placed in January? */
 SELECT COUNT(Quantity)
 FROM BIT_DB.JanSales;
