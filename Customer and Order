@@ -56,3 +56,47 @@ SELECT Product, COUNT(Quantity) AS number_of_items
 FROM BIT_DB.FebSales
 WHERE location LIKE '%Los Angeles%'
 GROUP BY Product;
+
+/* 10. List all the products sold in Los Angeles in February, and include how many of each were sold */
+SELECT Product, COUNT(Quantity) AS number_of_items
+FROM BIT_DB.FebSales
+WHERE location LIKE '%Los Angeles%'
+GROUP BY Product;
+
+/* 11. Which locations in New York received at least 3 orders in January, and how many orders did they each receive? (Hint: use HAVING) */
+SELECT Product, COUNT(Quantity) AS num_of_orders
+FROM BIT_DB.JanSales
+WHERE location LIKE '%New York City%'
+GROUP BY Product
+HAVING num_of_orders >=3;
+
+/* 12. How many of each type of headphone were sold in February? */
+SELECT DISTINCT(Product), COUNT(Quantity)
+FROM BIT_DB.FebSales 
+WHERE Product LIKE '%Headphones%'
+GROUP BY Product;
+
+/* 13. What was the average amount spent per account in February? 
+(Hints: For this question, we want the average amount spent / number of accounts, not the amount spent by each account. 
+To multiply, you can use the * symbol, and to divide, you can use the / symbol) */
+SELECT SUM(feb.Quantity*feb.Price)/COUNT(cus.acctnum) AS avg_spending_per_acct
+FROM BIT_DB.FebSales AS feb
+LEFT JOIN BIT_DB.customers AS cus
+ON feb.orderID = cus.order_id
+WHERE LENGTH(orderID)=6
+AND orderID <> 'OrderID';
+
+/* 14. What was the average quantity of products purchased per account in February? (Hint: just like question 3, we want the overall average, not the average for each account individually) */
+SELECT SUM(feb.quantity)/COUNT(acctnum) AS avg_quantity_per_acct
+FROM BIT_DB.FebSales AS feb
+LEFT JOIN BIT_DB.customers AS cus 
+ON feb.orderid = cus.order_id
+WHERE LENGTH(order_id) = 6
+AND orderID <> 'OrderID';
+
+/* 15. Which product brought in the most revenue in January and how much revenue did it bring in total? */
+SELECT Product, SUM(Price*Quantity) AS revenue
+FROM BIT_DB.JanSales 
+GROUP BY Product
+ORDER BY revenue DESC
+LIMIT 1; 
