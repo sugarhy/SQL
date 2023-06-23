@@ -1,8 +1,8 @@
-# For this project, I downloaded Spotify data from Kaggle.
-# Then I created a table to insert Spotify data into.
-# Finally, I performed analytics on the data using SQL. 
+/* For this project, I downloaded Spotify data from Kaggle. (https://www.kaggle.com/datasets/equinxx/spotify-top-50-songs-in-2021?resource=download) */
+/* Then I created a table to insert Spotify data into. */
+/* Finally, I performed analytics on the data using SQL. */
 
-#Creating the table: 
+/* Create table */
 CREATE TABLE BIT_DB.Spotifydata (
 id integer PRIMARY KEY,
 artist_name varchar NOT NULL,
