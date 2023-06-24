@@ -60,3 +60,16 @@ SELECT artist_name, AVG(duration_ms)
 FROM BIT_DB.Spotifydata
 GROUP BY artist_name 
 ORDER BY AVG(duration_ms) desc LIMIT 1;
+
+/* Common Table Expression (CTE) */
+
+/* Calculate the average popularity for the artists in the Spotify data table. */
+/* Then, for every artist with an average popularity of 90 or above, show their name, their average popularity, and label them as a “Top Star” */
+WITH TEMP_POP_TABLE AS(
+SELECT s.artist_name, AVG(s.popularity) AS popl
+FROM Spotifydata s
+GROUP BY s.artist_name
+)
+SELECT artist_name, popl, 'Top Star' AS Tag 
+FROM TEMP_POP_TABLE
+WHERE popl >= 90;
