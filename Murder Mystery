@@ -1,9 +1,9 @@
--- select case report that occurred on 2018-01-15 in SQL City
+-- Select case report that occurred on 2018-01-15 in SQL City
 SELECT * 
 FROM crime_scene_report 
 WHERE date = 20180115 AND city = 'SQL City';
 
--- find witnesses and interview them 
+-- Find witnesses and interview them 
 SELECT * 
 FROM interview 
 JOIN person 
@@ -51,6 +51,10 @@ INNER JOIN car
 ON gym.person_id = car.id;
 -- Culprit: Jeremy Bowers
 
+-- Check solution for culprit
+INSERT INTO solution VALUES (1, 'Jeremy Bowers');
+SELECT value FROM solution;
+
 -- Interview the culprit 
 SELECT transcript 
 FROM interview 
@@ -65,3 +69,7 @@ JOIN facebook_event_checkin f
 ON p.id = f.person_id 
 WHERE dl.hair_color='red' AND dl.gender = 'female' AND dl.car_make='Tesla' AND dl.car_model='Model S' AND f.date LIKE '201712%';
 -- Real villain: Miranda Priestly
+
+-- Check solution for real villain
+INSERT INTO solution VALUES (1, 'Miranda Priestly');
+SELECT value FROM solution;
