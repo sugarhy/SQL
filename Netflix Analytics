@@ -62,7 +62,7 @@ VALUES
 
 
 
-#In this file, I am querying a database that holds Nexflix data to answer questions about the data. 
+# QUERIES
 
 # 1. List all the movie titles with the cast and genre 
 SELECT info.title, people.cast, info.listed_in 
